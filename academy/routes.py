@@ -61,7 +61,7 @@ def check_if_token_revoked(jwt_header, jwt_payload):
     
     # Solo aplica el período de gracia si tenemos un timestamp de emisión
     if issued_at_timestamp:
-        issued_at_datetime = datetime.fromtimestamp(issued_at_timestamp)
+        issued_at_datetime = datetime.utcfromtimestamp(issued_at_timestamp)
         GRACE_PERIOD = timedelta(seconds=10) # Define un período de gracia (ej. 5 segundos)
 
         # Si el token fue emitido muy recientemente...
